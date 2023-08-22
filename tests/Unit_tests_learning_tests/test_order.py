@@ -1,4 +1,4 @@
-from pay.order import Order, LineItem, OrderStatus
+from Unit_tests_learning.pay.order import Order, LineItem, OrderStatus
 
 
 def test_empty_order_total() -> None:

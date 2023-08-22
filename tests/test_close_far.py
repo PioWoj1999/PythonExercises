@@ -1,4 +1,4 @@
-from close_far_6 import close, close_far
+from codingbat.Logic_2.close_far import close_far, close
 
 
 def test_close_positive() -> None:

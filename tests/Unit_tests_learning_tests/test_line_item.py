@@ -1,4 +1,4 @@
-from pay.order import LineItem
+from Unit_tests_learning.pay.order import LineItem
 
 
 def test_line_item_default() -> None:
