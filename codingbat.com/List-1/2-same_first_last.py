@@ -6,6 +6,7 @@ def same_first_last(nums):
         return False
 
 
+# TODO: practice
 # print(same_first_last([1, 2, 3]))
 # def same_first_last(nums):
 #   return len(nums) >= 1 and nums[0] == nums[-1]
