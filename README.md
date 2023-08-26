@@ -125,6 +125,20 @@ Please explain the design reasons why mutable global state is being used in a co
 Nested local functions or classes are fine when used to close over a local variable. Inner classes are fine.<br/>
 Avoid nested functions or classes except when closing over a local value other than self or cls. Do not nest a function just to hide it from users of a module. Instead, prefix its name with an ```_``` at the module level so that it can still be accessed by tests.
 
+(https://stackoverflow.com/questions/4613000/difference-between-cls-and-self-in-python-classes)
+Function and method arguments:
+* Always use self for the first argument to instance methods(i.e.: def \_\_init\_\_(self, ...):).
+* Always use cls for the first argument to class methods (@classmethod), i.e.: 
+```python
+@classmethod
+def __subclasshook__(cls, subclass):
+    return (hasattr(subclass, 'load_data_source') and 
+            callable(subclass.load_data_source) and 
+            hasattr(subclass, 'extract_text') and 
+            callable(subclass.extract_text) or 
+            NotImplemented)
+```
+
 ### Comprehensions & Generator Expressions
 
 **Definition:** List, Dict, and Set comprehensions as well as generator expressions provide a concise and efficient way to create container types and iterators without resorting to the use of traditional loops, map(), filter(), or lambda.
@@ -143,6 +157,13 @@ You can’t tell the type of objects by reading the method names (unless the var
 **Definition:** A generator function returns an iterator that yields a value each time it executes a yield statement. After it yields a value, the runtime state of the generator function is suspended until the next value is needed. <br/>
 
 Use generators as needed. Use “Yields:” rather than “Returns:” in the docstring for generator functions. If the generator manages an expensive resource, make sure to force the clean up.
+
+(https://prutor.ai/when-to-use-yield-instead-of-return-in-python/)
+The yield statement suspends function’s execution and sends a value back to the caller, but retains enough state to enable function to resume where it is left off. When resumed, the function continues execution immediately after the last yield run. This allows its code to produce a series of values over time, rather than computing them at once and sending them back like a list.
+
+Return sends a specified value back to its caller whereas Yield can produce a sequence of values. We should use yield when we want to iterate over a sequence, but don’t want to store the entire sequence in memory.
+
+Yield are used in Python generators. A generator function is defined like a normal function, but whenever it needs to generate a value, it does so with the yield keyword rather than return. If the body of a def contains yield, the function automatically becomes a generator function.
 
 ### Lambda Functions
 
@@ -309,6 +330,29 @@ except ValueError: baz(foo)
 Getter and setter functions (also called accessors and mutators) should be used when they provide a meaningful role or behavior for getting or setting a variable’s value.
 
 In particular, they should be used when getting or setting the variable is complex or the cost is significant, either currently or in a reasonable future.
+```python
+class SampleClass:
+    def __init__(self, a):
+        ## private varibale or property in Python
+        self.__a = a
+
+    ## getter method to get the properties using an object
+    def get_a(self):
+        return self.__a
+
+    ## setter method to change the value 'a' using an object
+    def set_a(self, a):
+        self.__a = a
+
+```
+SampleClass has three methods:
+* \_\_init\_\_:- It is used to initialize the attributes or properties of a class.
+* \_\_a:- It is a private attribute.
+* get_a:- It is used to get the values of private attribute a.
+* set_a:- It is used to set the value of a using an object of a class.
+
+You are not able to access the private variables directly in Python. That's why you implemented the getter method.
+
 
 ### Naming
 * module_name, 
