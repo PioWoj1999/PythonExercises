@@ -1,6 +1,7 @@
 Table of Contents:
 - [PythonExercises](#pythonexercises)
   - [Repository created to track my progress on Python upskilling and using it with many different technologies for DevSecOps approach.](#repository-created-to-track-my-progress-on-python-upskilling-and-using-it-with-many-different-technologies-for-devsecops-approach)
+- [Jenkins](#jenkins)
 - [codingbat.com](#codingbatcom)
   - [Website that has available Python practice examples with sandbox and unit tests, that each script to practice needs to pass](#website-that-has-available-python-practice-examples-with-sandbox-and-unit-tests-that-each-script-to-practice-needs-to-pass)
 - [Google Python Style Guide](#google-python-style-guide)
@@ -52,6 +53,11 @@ Table of Contents:
 About me:<br/>
 Repository created to track my progress on Python upskilling and using it with many different technologies for DevSecOps approach.
 ---
+
+# Jenkins
+```docker
+docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
+```
 
 # codingbat.com
 URL: <https://codingbat.com/python>
