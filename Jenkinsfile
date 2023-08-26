@@ -2,10 +2,14 @@ pipeline{
     agent any
 
     stages{
-        stage("Build"){
-            
+        stage("Checkout"){
             steps{
-                sh "python3 --version"
+                checkout scmGit(branches: [[name: 'Peter']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/PioWoj1999/PythonExercises.git']])
+            }
+        }
+        stage("Build"){
+            steps{
+                sh "pip install -r requirements.txt"
             }
         }
     }
